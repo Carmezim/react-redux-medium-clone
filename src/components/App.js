@@ -8,11 +8,11 @@ const mapStateToProps = state => ({
 
 class App extends React.Component {
 	render() {
-		return {
+		return (
 			<div>
 				<Header appName={this.props.appName} />
 			</div>
-		};
+		);
 	}
 }
 
