@@ -1,38 +1,22 @@
+import App from 'components/App';
+
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { createStore } from 'redux';
-import reducer from './checkbox/checkbox';
+import { applyMiddleware, createStore } from 'redux';
+import { Provider } from 'react-redux';
 
+const defaultState = {
+	appName: 'medium-clone',
+	articles: null
+};
 
-const store = createStore(reducer);
-
-class App extends React.Component {
-	constructor() {
-		super();
-		this.state = {};
-	}
-
-	componentWillMount() {
-		store.subscribe(() => this.setState(store.getState()));
-	}
-
-  render() {
-		const onClick = () => store.dispatch({ type: 'TOGGLE' });
-    return (
-			<div>      
-				<h1>To-dos</h1>
-				<div>
-					Learn Redux
-					<input 
-						type="checkbox"
-						checked={!!this.state.checked}
-						onClick={onClick} />
-				</div>
-				{ this.state.checked ? (<h2>Done!</h2>) : null }
-			</div>
-    );
-	}
+const reducer = (state = defaultState, action) => {
+	return state;
 }
+
+
 ReactDOM.render((
-  <App />
-), document.getElementById('root'));
+  <Provider store={store}>
+	<App />
+	</Provider>
+), document.getElementById('main'));
