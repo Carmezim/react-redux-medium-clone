@@ -1,4 +1,4 @@
-import App from 'components/App';
+import App from './components/App';
 
 import ReactDOM from 'react-dom';
 import React from 'react';
@@ -12,11 +12,12 @@ const defaultState = {
 
 const reducer = (state = defaultState, action) => {
 	return state;
-}
+};
 
+const store = createStore(reducer);
 
 ReactDOM.render((
   <Provider store={store}>
-	<App />
+		<App />
 	</Provider>
 ), document.getElementById('main'));
