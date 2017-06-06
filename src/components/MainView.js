@@ -22,6 +22,7 @@ const MainView = props => {
 
 				<ArticleList 
 					articles={props.articles} />
+			</div>
 		</div>
 	);
 };

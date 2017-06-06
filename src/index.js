@@ -1,5 +1,5 @@
 import App from './components/App';
-
+import { promiseMiddleware } from './middleware';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import { applyMiddleware, createStore } from 'redux';
@@ -14,7 +14,7 @@ const reducer = (state = defaultState, action) => {
 	return state;
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(promiseMiddleware));
 
 ReactDOM.render((
   <Provider store={store}>
