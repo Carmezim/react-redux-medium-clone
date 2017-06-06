@@ -1,4 +1,4 @@
-import ArticleList from 'ArticleList';
+import ArticleList from '../ArticlesList';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -19,10 +19,10 @@ const MainView = props => {
 					</a>
 				</li>
 				</ul>
-
-				<ArticleList 
-					articles={props.articles} />
 			</div>
+
+			<ArticleList 
+				articles={props.articles} />			
 		</div>
 	);
 };

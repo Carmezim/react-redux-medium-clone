@@ -1,3 +1,7 @@
+const isPromise = (v) => {
+	return v && typeof v.then === 'function';
+};
+
 const promiseMiddleware = store => next => action => {
 	if (isPromise(action.payload)) {
 		action.payload.then(
@@ -16,10 +20,6 @@ const promiseMiddleware = store => next => action => {
 	}
 
 	next(action);
-};
-
-const isPromise = (v) => {
-	return v && typeof v.then === 'function';
 };
 
 export { promiseMiddleware };
