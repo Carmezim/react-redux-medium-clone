@@ -1,23 +1,25 @@
 import App from './components/App';
-import { promiseMiddleware } from './middleware';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import { applyMiddleware, createStore } from 'redux';
-import { Provider } from 'react-redux';
+import { promiseMiddleware } from './middleware';
 
 const defaultState = {
-	appName: 'medium-clone',
-	articles: null
+  appName: 'conduit',
+  articles: null
 };
-
-const reducer = (state = defaultState, action) => {
-	return state;
+const reducer = function(state = defaultState, action) {
+  switch (action.type) {
+    case 'HOME_PAGE_LOADED':
+      return { ...state, articles: action.payload.articles };
+  }
+  return state;
 };
-
 const store = createStore(reducer, applyMiddleware(promiseMiddleware));
 
 ReactDOM.render((
   <Provider store={store}>
-		<App />
-	</Provider>
-), document.getElementById('main'));
+    <App />
+  </Provider>
+), document.getElementById('root'));

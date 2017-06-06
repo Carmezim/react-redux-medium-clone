@@ -19,4 +19,6 @@ const Articles = {
     requests.get(`/articles?limit=10`)
 };
 
-export default { Articles };
+export default {
+  Articles
+};
